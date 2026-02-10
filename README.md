@@ -62,6 +62,39 @@ The project assumes hourly BTC/USDT data, e.g. `data/BTC_USDT_1h_t_full.csv`. Yo
 - No unit tests or experiment standardization yet.
 - No live trading or portfolio risk management.
 
+
+## Pytest practice in this project
+
+You can practice `pytest` here by testing strategy logic in small, deterministic units before testing full backtests.
+
+### Suggested learning path
+
+1. **Start from pure decision functions** in `Simulation`:
+   - `_rsi_long_signal` / `_rsi_short_signal`
+   - `_macd_long_signal` / `_macd_short_signal`
+   - `_level_signal`
+2. **Then test integration behavior** of `launch_simulation()` with controlled/mocked signals.
+3. **Finally add data-oriented tests** for indicator and level generation in `scripts/tools.py`.
+
+### Ready example tests
+
+A starter pytest suite is included in `tests/test_simulation.py` and can be run with:
+
+```bash
+pytest -q
+```
+
+### Practical exercises
+
+- Add parametrized tests for RSI thresholds (`pytest.mark.parametrize`).
+- Add edge-case tests for very short history windows (e.g. less than observation period).
+- Add regression tests that lock expected behavior for a known historical slice from `data/`.
+- Add fixtures for reusable mock/fake market data.
+
+### Notes
+
+Because this repo currently has no dependency lock file, ensure runtime packages are installed in your environment before running tests (`numpy`, `pandas`, `ta`, etc.).
+
 ## Suggested next steps
 
 - Add `requirements.txt` and/or `pyproject.toml`.
