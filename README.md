@@ -1,4 +1,4 @@
-# Bozon BTC Trading Bot
+# Bozon BTC Trading Simulation
 
 A research-oriented project for analyzing historical BTC/USDT data and simulating a strategy based on technical indicators (EMA, RSI, MACD, Bollinger Bands) and support/resistance levels. It includes scripts for data acquisition, indicator calculation, and backtest-style trade simulation.
 
